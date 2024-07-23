@@ -87,6 +87,17 @@ tasks.register('cleanFrontend', Delete) {
     }
 }
 
+tasks.named("bootBuildImage") {
+    imageName.set("ghcr.io/dmfrey/${project.name}")
+    publish = true
+    docker {
+        publishRegistry {
+            username = ${System.getenv('USERNAME')}
+            password = ${System.getenv('TOKEN')}
+        }
+    }
+}
+
 // region configure Spring's build dependency chain
 jar {
     dependsOn copyFrontend
