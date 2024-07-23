@@ -92,8 +92,8 @@ tasks.named("bootBuildImage") {
     publish = true
     docker {
         publishRegistry {
-            username = ${System.getenv('USERNAME')}
-            password = ${System.getenv('TOKEN')}
+            username = "${System.getenv('USERNAME')}"
+            password = "${System.getenv('TOKEN')}"
         }
     }
 }
