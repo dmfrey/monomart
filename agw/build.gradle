@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.2'
+	id 'org.springframework.boot' version '3.2.8'
 	id 'io.spring.dependency-management' version '1.1.4'
 }
 
@@ -42,4 +42,15 @@ dependencyManagement {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.named("bootBuildImage") {
+	imageName.set("ghcr.io/dmfrey/${project.name}:${project.version}")
+	publish = true
+	docker {
+		publishRegistry {
+			username = "${System.getenv('USERNAME')}"
+			password = "${System.getenv('TOKEN')}"
+		}
+	}
 }
