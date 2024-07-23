@@ -88,7 +88,7 @@ tasks.register('cleanFrontend', Delete) {
 }
 
 tasks.named("bootBuildImage") {
-    imageName.set("ghcr.io/dmfrey/${project.name}")
+    imageName.set("ghcr.io/dmfrey/${project.name}:${project.version}")
     publish = true
     docker {
         publishRegistry {
